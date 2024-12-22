@@ -113,6 +113,8 @@ void Game::spawnEnemy()
 {
 	auto entity = m_entities.addEntity("enemy");
 
+	srand(time(NULL));
+
 	float ex = rand() % ((m_window.getSize().x - m_enemyConfig.SR) - m_enemyConfig.SR + 1) + m_enemyConfig.SR;
 	float ey = rand() % ((m_window.getSize().y - m_enemyConfig.SR) - m_enemyConfig.SR + 1) + m_enemyConfig.SR;
 
@@ -479,7 +481,7 @@ void Game::sCollision()
 
 void Game::sEnemySpawner()
 {
-	if (m_currentFrame - m_lastEnemySpawnTime == m_enemyConfig.SI)
+	if (m_currentFrame - m_lastEnemySpawnTime >= m_enemyConfig.SI)
 	{
 		spawnEnemy();
 	}
@@ -562,7 +564,7 @@ void Game::sUserInput()
 			}
 		}
 
-		if (event.type == sf::Event::MouseButtonPressed)
+		if (event.type == sf::Event::MouseButtonPressed && !m_paused)
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
