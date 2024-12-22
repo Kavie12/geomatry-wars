@@ -380,9 +380,7 @@ void Game::sCollision()
 	{
 		for (auto e : m_entities.getEntities("enemy"))
 		{
-			Vec2 diff = b->cTransform->pos - e->cTransform->pos;
-
-			if ((diff.x * diff.x + diff.y * diff.y) < ((b->cCollision->radius + e->cCollision->radius) * (b->cCollision->radius + e->cCollision->radius)))
+			if (e->cTransform->pos.dist2(b->cTransform->pos) < ((b->cCollision->radius + e->cCollision->radius) * (b->cCollision->radius + e->cCollision->radius)))
 			{
 				m_score += e->cScore->score;
 				spawnSmallEnemies(e);
@@ -398,9 +396,7 @@ void Game::sCollision()
 	{
 		for (auto e : m_entities.getEntities("small_enemy"))
 		{
-			Vec2 diff = b->cTransform->pos - e->cTransform->pos;
-
-			if ((diff.x * diff.x + diff.y * diff.y) < ((b->cCollision->radius + e->cCollision->radius) * (b->cCollision->radius + e->cCollision->radius)))
+			if (e->cTransform->pos.dist2(b->cTransform->pos) < ((b->cCollision->radius + e->cCollision->radius) * (b->cCollision->radius + e->cCollision->radius)))
 			{
 				m_score += e->cScore->score;
 				e->destroy();
@@ -415,9 +411,7 @@ void Game::sCollision()
 	{
 		for (auto p : m_entities.getEntities("player"))
 		{
-			Vec2 diff = e->cTransform->pos - p->cTransform->pos;
-
-			if ((diff.x * diff.x + diff.y * diff.y) < ((e->cCollision->radius + p->cCollision->radius) * (e->cCollision->radius + p->cCollision->radius)))
+			if (p->cTransform->pos.dist2(e->cTransform->pos) < ((e->cCollision->radius + p->cCollision->radius) * (e->cCollision->radius + p->cCollision->radius)))
 			{
 				float mx = m_window.getSize().x / 2.0f;
 				float my = m_window.getSize().y / 2.0f;
@@ -433,9 +427,7 @@ void Game::sCollision()
 	{
 		for (auto p : m_entities.getEntities("player"))
 		{
-			Vec2 diff = e->cTransform->pos - p->cTransform->pos;
-
-			if ((diff.x * diff.x + diff.y * diff.y) < ((e->cCollision->radius + p->cCollision->radius) * (e->cCollision->radius + p->cCollision->radius)))
+			if (p->cTransform->pos.dist2(e->cTransform->pos) < ((e->cCollision->radius + p->cCollision->radius) * (e->cCollision->radius + p->cCollision->radius)))
 			{
 				float mx = m_window.getSize().x / 2.0f;
 				float my = m_window.getSize().y / 2.0f;
@@ -451,9 +443,7 @@ void Game::sCollision()
 	{
 		for (auto w : m_entities.getEntities("special_weapon"))
 		{
-			Vec2 diff = e->cTransform->pos - w->cTransform->pos;
-
-			if ((diff.x * diff.x + diff.y * diff.y) < ((e->cCollision->radius + w->cCollision->radius) * (e->cCollision->radius + w->cCollision->radius)))
+			if (w->cTransform->pos.dist2(e->cTransform->pos) < ((e->cCollision->radius + w->cCollision->radius) * (e->cCollision->radius + w->cCollision->radius)))
 			{
 				m_score += e->cScore->score;
 				spawnSmallEnemies(e);
@@ -468,9 +458,7 @@ void Game::sCollision()
 	{
 		for (auto w : m_entities.getEntities("special_weapon"))
 		{
-			Vec2 diff = e->cTransform->pos - w->cTransform->pos;
-
-			if ((diff.x * diff.x + diff.y * diff.y) < ((e->cCollision->radius + w->cCollision->radius) * (e->cCollision->radius + w->cCollision->radius)))
+			if (w->cTransform->pos.dist2(e->cTransform->pos) < ((e->cCollision->radius + w->cCollision->radius) * (e->cCollision->radius + w->cCollision->radius)))
 			{
 				m_score += e->cScore->score;
 				e->destroy();

@@ -73,6 +73,13 @@ float Vec2::dist(const Vec2& rhs) const
 	return sqrtf(xDiff * xDiff + yDiff * yDiff);
 }
 
+float Vec2::dist2(const Vec2& rhs) const
+{
+	float xDiff = rhs.x - x;
+	float yDiff = rhs.y - y;
+	return (xDiff * xDiff + yDiff * yDiff);
+}
+
 void Vec2::normalize()
 {
 	float lvl = sqrtf(x * x + y * y);
