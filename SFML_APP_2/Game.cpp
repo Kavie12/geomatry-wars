@@ -545,7 +545,7 @@ void Game::sUserInput()
 				m_player->cInput->right = false;
 				break;
 			case sf::Keyboard::Escape:
-				m_window.close();
+				m_running = false;
 				break;
 			default:
 				break;
